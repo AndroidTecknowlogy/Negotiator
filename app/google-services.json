@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "135820974592",
+    "firebase_url": "https://smack-78da6.firebaseio.com",
+    "project_id": "smack-78da6",
+    "storage_bucket": "smack-78da6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135820974592:android:c7c79006929ee1d6",
+        "android_client_info": {
+          "package_name": "com.kongahack.negotiator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "135820974592-2comb3lpqua23gi0sdhoi52l0jaoc9lh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kongahack.negotiator",
+            "certificate_hash": "FBA18D75D530CE1FDAA22DCB9D03D4A1BA45AADC"
+          }
+        },
+        {
+          "client_id": "135820974592-93b7b9jule9l6esko7kjinovbhot06ea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqCdYP_pK3CNpDvfF39ygcBOcmQMrvpxA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "135820974592-93b7b9jule9l6esko7kjinovbhot06ea.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
