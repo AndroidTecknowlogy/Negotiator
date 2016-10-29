@@ -1,6 +1,7 @@
 package com.kongahack.negotiator.activity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
 import com.daimajia.androidanimations.library.Techniques;
@@ -18,6 +19,7 @@ public class SplashActivity extends AwesomeSplash{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     @Override
