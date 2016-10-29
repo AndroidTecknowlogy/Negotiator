@@ -1,6 +1,8 @@
 package com.kongahack.negotiator.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -8,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kongahack.negotiator.R;
+import com.kongahack.negotiator.model.ProductItem;
+
+import java.util.ArrayList;
 
 /**
  * Created by nezspencer on 10/29/16.
@@ -15,23 +20,36 @@ import com.kongahack.negotiator.R;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Holder> {
 
-    public ProductAdapter() {
-        super();
+    private ArrayList<ProductItem> productItems;
+    private Context context;
+    public ProductAdapter(Context context,ArrayList<ProductItem> productItems) {
+        this.productItems=productItems;
+        this.context=context;
     }
 
     @Override
     public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        View view= LayoutInflater.from(context).inflate(R.layout.product_item,parent,false);
+
+        return new Holder(view);
     }
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
 
+        ProductItem item=productItems.get(position);
+
+        holder.productName.setText(item.getProductName());
+        holder.sellerName.setText(item.getSellerName());
+        holder.price.setText(item.getPrice());
+        holder.productPix.setImageBitmap(item.getProductImage());
+
+
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return productItems.size();
     }
 
     static class Holder extends RecyclerView.ViewHolder{
