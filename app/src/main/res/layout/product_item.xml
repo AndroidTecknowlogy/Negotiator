@@ -10,7 +10,7 @@
         android:scaleType="centerCrop"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@drawable/tv_1"/>
+        android:src="@drawable/m"/>
 
     <TextView
         android:id="@+id/product_name"
