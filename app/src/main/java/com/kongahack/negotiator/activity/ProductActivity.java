@@ -1,15 +1,14 @@
 package com.kongahack.negotiator.activity;
 
 import android.content.pm.ActivityInfo;
-import android.os.Bundle;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 
 import com.kongahack.negotiator.GlobalVariables;
 import com.kongahack.negotiator.R;
-import com.kongahack.negotiator.adapter.ProductAdapter;
+import com.kongahack.negotiator.fragment.ProductListFragment;
 import com.kongahack.negotiator.model.ProductItem;
 
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ import java.util.ArrayList;
  */
 
 public class ProductActivity extends AppCompatActivity {
-    private RecyclerView productRecycler;
+
     private static String [] productNames;
 
     private static String [] sellerNames;
@@ -27,12 +26,12 @@ public class ProductActivity extends AppCompatActivity {
     private static String[] productPrice;
 
     private static ArrayList<Drawable> productImages;
-    private ProductAdapter productAdapter;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        setContentView(R.layout.activity_products);
+        setContentView(R.layout.activity_main);
         productPrice=getResources().getStringArray(R.array.prices);
         productNames=getResources().getStringArray(R.array.product_name);
         sellerNames=getResources().getStringArray(R.array.seller_name);
@@ -47,7 +46,7 @@ public class ProductActivity extends AppCompatActivity {
         productImages.add(getResources().getDrawable(R.drawable.m5));
 
 
-        productRecycler=(RecyclerView)findViewById(R.id.product_recycler);
+
 
 
         // add dummy productItems to the global ProductItemList;
@@ -63,10 +62,13 @@ public class ProductActivity extends AppCompatActivity {
             app.addProductItem(item);
         }
 
-        productAdapter=new ProductAdapter(this,app.getMyProducts());
-        productRecycler.setAdapter(productAdapter);
+        getSupportFragmentManager().beginTransaction().replace(R.id.container_main,new ProductListFragment())
+                .commit();
 
+    }
 
+    public void openChatFragment(ProductItem item)
+    {
 
     }
 }
