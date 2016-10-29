@@ -34,6 +34,7 @@ public class ProductActivity extends AppCompatActivity {
 
     private static BoarderFragment boarderFragment;
 
+    private final String CHAT = "chat_fragment";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -83,7 +84,10 @@ public class ProductActivity extends AppCompatActivity {
 
     public void openChatFragment(int itemPosition)
     {
-        getSupportFragmentManager().beginTransaction().replace(R.id.container_main,new AddNewUserFragment())
-                .commit();
+        /*getSupportFragmentManager().beginTransaction().replace(R.id.container_main,new AddNewUserFragment())
+                .commit();*/
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container_main, new ChatFragment(), CHAT).commit();
     }
 }

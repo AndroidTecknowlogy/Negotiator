@@ -73,14 +73,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Holder> 
             shoppingCart=(ImageButton)itemView.findViewById(R.id.shopping_cart);
             chatButton=(ImageButton)itemView.findViewById(R.id.chat_button);
 
-            chatButton.setOnClickListener(new View.OnClickListener() {
+            /*chatButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Toast.makeText( context, "clicked", Toast.LENGTH_SHORT).show();
                     ProductActivity.activityInstance.openChatFragment(itemPosition);
 
                 }
-            });
+            });*/
         }
     }
 }

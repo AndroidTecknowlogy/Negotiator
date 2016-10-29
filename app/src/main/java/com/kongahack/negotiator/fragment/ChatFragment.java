@@ -2,6 +2,7 @@ package com.kongahack.negotiator.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +23,7 @@ import com.kongahack.negotiator.model.ChatItem;
 public class ChatFragment extends Fragment{
 
     private EditText inputMsg;
-    private Button sendMessage;
+    private FloatingActionButton sendMessage;
     FirebaseDatabase chatDatabase;
     DatabaseReference databaseReference;
     private ChatItem chatItem;
@@ -33,7 +34,7 @@ public class ChatFragment extends Fragment{
         View view=inflater.inflate(R.layout.fragment_chat,container,false);
 
         inputMsg=(EditText)view.findViewById(R.id.input_message);
-        sendMessage=(Button)view.findViewById(R.id.send_button);
+        sendMessage=(FloatingActionButton) view.findViewById(R.id.send_button);
 
         return view;
 
