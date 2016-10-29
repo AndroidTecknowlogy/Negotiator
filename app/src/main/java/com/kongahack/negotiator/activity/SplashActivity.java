@@ -11,7 +11,7 @@ import com.viksaa.sssplash.lib.cnst.Flags;
 import com.viksaa.sssplash.lib.model.ConfigSplash;
 
 /**
- * Created by nezspencer on 10/29/16.
+ * Created by AGBOMA Franklyn on 10/29/16.
  */
 
 public class SplashActivity extends AwesomeSplash{

@@ -31,7 +31,7 @@ public class ProductActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_product_view);
         productPrice=getResources().getStringArray(R.array.prices);
         productNames=getResources().getStringArray(R.array.product_name);
         sellerNames=getResources().getStringArray(R.array.seller_name);

@@ -3,7 +3,7 @@ package com.kongahack.negotiator.helper;
 import java.util.HashMap;
 
 /**
- * Created by W9 on 11/24/2015.
+ * Created by AGBOMA Franklyn on 10/29/16.
  */
 public class Maps {
     /**
