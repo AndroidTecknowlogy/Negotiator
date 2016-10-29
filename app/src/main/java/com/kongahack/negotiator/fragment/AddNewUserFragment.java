@@ -1,4 +1,4 @@
-package com.kongahack.negotiator.fragments;
+package com.kongahack.negotiator.fragment;
 
 import android.widget.EditText;
 
