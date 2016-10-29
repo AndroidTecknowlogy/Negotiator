@@ -35,26 +35,33 @@ public class SplashActivity extends AwesomeSplash{
                 R.anim.activity_open_translate, R.anim.activity_close_scale);
 
         //Customize Circular Reveal
-        configSplash.setBackgroundColor(R.color.home); //any color you want form colors.xml
-        configSplash.setAnimCircularRevealDuration(700); //int ms
+        configSplash.setBackgroundColor(R.color.colorPrimary); //any color you want form colors.xml
+        configSplash.setAnimCircularRevealDuration(850); //int ms
         configSplash.setRevealFlagX(Flags.REVEAL_LEFT);  //or Flags.REVEAL_LEFT
         configSplash.setRevealFlagY(Flags.REVEAL_TOP); //or Flags.REVEAL_TOP
 
         //Customize Logo
-        configSplash.setLogoSplash(R.drawable.smack);
-        configSplash.setAnimLogoSplashDuration(500); //int ms
+        configSplash.setLogoSplash(R.drawable.smack_ic);
+        configSplash.setAnimLogoSplashDuration(700); //int ms
         configSplash.setAnimLogoSplashTechnique(Techniques.FadeIn);
 
-        configSplash.setTitleSplash("smacK");
-        configSplash.setTitleTextColor(android.R.color.black);
-        configSplash.setTitleTextSize(48f); //float value
+        configSplash.setTitleSplash("Mobile");
+        configSplash.setTitleTextColor(android.R.color.white);
+        configSplash.setTitleTextSize(40f); //float value
         configSplash.setAnimTitleDuration(600);
         configSplash.setAnimTitleTechnique(Techniques.Flash);
+
+
+
 
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        //closing transition animations
+        overridePendingTransition(
+                R.anim.activity_open_scale,
+                R.anim.activity_close_translate);
     }
 }
