@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Holder> {
 
     private ArrayList<ProductItem> productItems;
-    private Context context;
+    private static Context context;
     public ProductAdapter(Context context,ArrayList<ProductItem> productItems) {
         this.productItems=productItems;
         this.context=context;
@@ -68,6 +68,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Holder> 
             price=(TextView)itemView.findViewById(R.id.price);
             shoppingCart=(ImageButton)itemView.findViewById(R.id.shopping_cart);
             chatButton=(ImageButton)itemView.findViewById(R.id.chat_button);
+
+
         }
     }
 }

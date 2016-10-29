@@ -12,11 +12,12 @@ import android.widget.EditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.kongahack.negotiator.R;
+import com.kongahack.negotiator.model.ChatItem;
 
 /**
  * Created by brenda on 10/29/16.
  * This view is for is invoked from the chatListFragment
- * 
+ *
  */
 public class ChatFragment extends Fragment{
 
@@ -24,6 +25,7 @@ public class ChatFragment extends Fragment{
     private Button sendMessage;
     FirebaseDatabase chatDatabase;
     DatabaseReference databaseReference;
+    private ChatItem chatItem;
 
     @Nullable
     @Override
@@ -43,5 +45,6 @@ public class ChatFragment extends Fragment{
         super.onActivityCreated(savedInstanceState);
 
         chatDatabase=FirebaseDatabase.getInstance();
+        databaseReference=chatDatabase.getReference();
     }
 }
