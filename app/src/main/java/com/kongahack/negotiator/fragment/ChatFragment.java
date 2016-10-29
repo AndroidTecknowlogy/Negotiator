@@ -1,6 +1,5 @@
 package com.kongahack.negotiator.fragment;
 
-import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -12,12 +11,12 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -63,7 +62,16 @@ public class ChatFragment extends Fragment
     FirebaseDatabase chatDatabase;
     DatabaseReference databaseReference;
     DatabaseReference chatRef;
+    DatabaseReference myRef;
     private ChatItem chatItem;
+
+    private String sellerID;
+
+    private ArrayList<Chat> chatArrayList;
+
+    private ListView chatRecycler;
+    DatabaseReference refBuyer;
+    DatabaseReference refSeller;
     int position;
 
 
@@ -128,7 +136,7 @@ public class ChatFragment extends Fragment
 
         databaseReference= GlobalVariables.appInstance.getDatabaseReference();
 
-
+        myRef=databaseReference.child(Constants.CHAT_REF);
         refBuyer =databaseReference.child(Constants.BUYER);
         refSeller=databaseReference.child(Constants.SELLER);
 
@@ -147,9 +155,11 @@ public class ChatFragment extends Fragment
             }
         });
 
+        //chatRef =databaseReference.child(Constants.CHAT_REF+"/"+Constants
+          //      .THIS_USER+"/"+sellerID+"/");
 
-        chatRef =databaseReference.child(Constants.CHAT_REF+"/"+Constants
-                .THIS_USER+"/"+sellerID+"/");
+        chatRef =databaseReference.child(Constants.CHAT_REF+"/"+Constants.THIS_USER+"/"+Constants
+                .CHAT_REF+"/");
         chatAdapter=new FirebaseListAdapter<ChatItem>(getActivity(),ChatItem.class,
                 R.layout.layout_chat_item, chatRef) {
             @Override
@@ -162,7 +172,7 @@ public class ChatFragment extends Fragment
                     RelativeLayout.LayoutParams params=(RelativeLayout.LayoutParams)msgView.getLayoutParams();
                     params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
                     msgView.setLayoutParams(params);
-                    msgView.setText(chatItem.getMessage());
+                    msgView.setText(model.getMessage());
 
                 }
                 else {
@@ -175,7 +185,7 @@ public class ChatFragment extends Fragment
                 }
             }
         };
-        chatRecycler.setAdapter(chatAdapter);
+        listView.setAdapter(chatAdapter);
 
         sendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -197,11 +207,10 @@ public class ChatFragment extends Fragment
         ChatItem item=new ChatItem(mesg,"yes");
         HashMap<String,Object> chatMap=item.toMap();
         HashMap<String,Object> objMap=new HashMap<>();
-        objMap.put("/"+Constants
-                .THIS_USER+"/"+sellerID+"/",chatMap);
+        objMap.put("/"+Constants.THIS_USER+"/"+Constants.CHAT_REF+"/"+sellerID+"/",chatMap);
 
 
-        chatRef.updateChildren(objMap, new DatabaseReference.CompletionListener() {
+        myRef.updateChildren(objMap, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
 

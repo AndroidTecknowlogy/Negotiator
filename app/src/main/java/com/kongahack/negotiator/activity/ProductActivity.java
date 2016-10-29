@@ -92,14 +92,14 @@ public class ProductActivity extends AppCompatActivity implements ChatFragment.R
         Bundle bundle=new Bundle();
         bundle.putInt(Constants.KEY_ITEM_POSITION,itemPosition);
         fragment.setArguments(bundle);
-        getSupportFragmentManager().beginTransaction().replace(R.id.container_main,fragment)
+        getSupportFragmentManager().beginTransaction().replace(R.id.container_main,fragment,CHAT)
                 .commit();
         /*getSupportFragmentManager().beginTransaction().replace(R.id.container_main,new AddNewUserFragment())
                 .commit();*/
 
-        getSupportFragmentManager().beginTransaction()
+        /*getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container_main, new ChatFragment(), CHAT)
-                .commit();
+                .commit();*/
     }
 
     @Override
