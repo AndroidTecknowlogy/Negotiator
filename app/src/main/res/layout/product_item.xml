@@ -69,15 +69,15 @@
 
                     <ImageButton
                         android:id="@+id/shopping_cart"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
                         android:src="@drawable/ic_add_shopping_cart_black_24dp"
                         android:background="@android:color/transparent"/>
 
                     <ImageButton
                         android:id="@+id/chat_button"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
                         android:layout_marginLeft="3dp"
                         android:layout_marginStart="3dp"
                         android:layout_toRightOf="@+id/shopping_cart"
