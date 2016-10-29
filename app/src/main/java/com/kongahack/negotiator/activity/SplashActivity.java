@@ -35,7 +35,7 @@ public class SplashActivity extends AwesomeSplash{
                 R.anim.activity_open_translate, R.anim.activity_close_scale);
 
         //Customize Circular Reveal
-        configSplash.setBackgroundColor(android.R.color.white); //any color you want form colors.xml
+        configSplash.setBackgroundColor(R.color.splash); //any color you want form colors.xml
         configSplash.setAnimCircularRevealDuration(850); //int ms
         configSplash.setRevealFlagX(Flags.REVEAL_LEFT);  //or Flags.REVEAL_LEFT
         configSplash.setRevealFlagY(Flags.REVEAL_TOP); //or Flags.REVEAL_TOP
@@ -45,8 +45,8 @@ public class SplashActivity extends AwesomeSplash{
         configSplash.setAnimLogoSplashDuration(700); //int ms
         configSplash.setAnimLogoSplashTechnique(Techniques.FadeIn);
 
-        configSplash.setTitleSplash("Mobile");
-        configSplash.setTitleTextColor(android.R.color.white);
+        configSplash.setTitleSplash("Team");
+        configSplash.setTitleTextColor(R.color.colorPrimary);
         configSplash.setTitleTextSize(40f); //float value
         configSplash.setAnimTitleDuration(600);
         configSplash.setAnimTitleTechnique(Techniques.Flash);
