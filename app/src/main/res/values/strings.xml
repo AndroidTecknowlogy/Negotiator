@@ -27,4 +27,13 @@
         <item>Price slash shop</item>
         <item>MBO electronics</item>
     </string-array>
+
+    <string-array name="chat_id">
+        <item>abc01</item>
+        <item>abc02</item>
+        <item>abc03</item>
+        <item>abc04</item>
+        <item>abc05</item>
+        <item>abc06</item>
+    </string-array>
 </resources>

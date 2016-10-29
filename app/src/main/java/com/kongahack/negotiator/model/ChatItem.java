@@ -18,6 +18,11 @@ public class ChatItem {
     public ChatItem() {
     }
 
+    public ChatItem(String message, String isUser) {
+        this.message = message;
+        this.isUser = isUser;
+    }
+
     public String getMessage() {
         return message;
     }

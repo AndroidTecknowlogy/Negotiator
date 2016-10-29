@@ -12,12 +12,14 @@ public class ProductItem {
     private String sellerName;
     private String price;
     private Drawable productImage;
+    private String sellerChatID;
 
-    public ProductItem(String productName, String sellerName, String price, Drawable productImage) {
+    public ProductItem(String productName, String sellerName, String price, Drawable productImage, String sellerChatID) {
         this.productName = productName;
         this.sellerName = sellerName;
         this.price = price;
         this.productImage = productImage;
+        this.sellerChatID = sellerChatID;
     }
 
     public String getProductName() {
@@ -46,6 +48,14 @@ public class ProductItem {
 
     public Drawable getProductImage() {
         return productImage;
+    }
+
+    public String getSellerChatID() {
+        return sellerChatID;
+    }
+
+    public void setSellerChatID(String sellerChatID) {
+        this.sellerChatID = sellerChatID;
     }
 
     public void setProductImage(Drawable productImage) {

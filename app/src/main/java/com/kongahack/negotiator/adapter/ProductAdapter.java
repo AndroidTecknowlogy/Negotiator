@@ -10,11 +10,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.kongahack.negotiator.R;
 import com.kongahack.negotiator.activity.ProductActivity;
+import com.kongahack.negotiator.app.GlobalVariables;
+import com.kongahack.negotiator.helper.Constants;
 import com.kongahack.negotiator.model.ProductItem;
+import com.kongahack.negotiator.model.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by nezspencer on 10/29/16.
@@ -77,7 +83,30 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Holder> 
                 @Override
                 public void onClick(View v) {
                     Toast.makeText( context, "clicked", Toast.LENGTH_SHORT).show();
-                    ProductActivity.activityInstance.openChatFragment(itemPosition);
+
+
+                    DatabaseReference reference=GlobalVariables.appInstance.getDatabaseReference();
+                    DatabaseReference usersRef=reference.child(Constants.USER_REF);
+
+                    String sellerName=GlobalVariables.appInstance.getMyProducts().get(itemPosition)
+                            .getSellerName();
+
+                    String sellerChatId=GlobalVariables.appInstance.getMyProducts().get
+                            (itemPosition)
+                            .getSellerChatID();
+                    User user=new User(sellerName,sellerChatId);
+                    HashMap<String,Object> userMap=user.toMap();
+
+                    usersRef.updateChildren(userMap, new DatabaseReference.CompletionListener() {
+                        @Override
+                        public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                            if (databaseError!=null)
+                                Toast.makeText(context,databaseError.getDetails(),Toast
+                                        .LENGTH_SHORT)
+                                .show();
+                                ProductActivity.activityInstance.openChatFragment(itemPosition);
+                        }
+                    });
 
                 }
             });*/
