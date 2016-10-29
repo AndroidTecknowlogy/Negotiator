@@ -1,58 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:padding="8dp">
+    android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/product_image"
-        android:scaleType="centerCrop"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@drawable/polystar"/>
 
-    <TextView
-        android:id="@+id/product_name"
-        android:text="product name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="3dp"
-        android:textSize="15sp"/>
-    <TextView
-        android:id="@+id/seller_name"
-        android:text="seller name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="3dp"/>
-    <TextView
-        android:id="@+id/price"
-        android:text="price"
-        android:layout_marginBottom="3dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <View
+        android:layout_width="5dp"
+        android:layout_height="match_parent"
+        android:background="@color/splash"/>
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="3dp">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        <ImageButton
-            android:id="@+id/shopping_cart"
-            android:layout_width="wrap_content"
-            android:src="@drawable/ic_add_shopping_cart_black_24dp"
-            android:layout_height="wrap_content"/>
+        <View
+            android:layout_width="135dp"
+            android:layout_height="5dp"
+            android:layout_alignBottom="@+id/layout_items"
+            android:background="@color/splash"/>
 
-        <ImageButton
-            android:id="@+id/chat_button"
+        <android.support.v7.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
-            android:layout_marginStart="3dp"
-            android:layout_toRightOf="@+id/shopping_cart"
-            android:layout_toEndOf="@+id/shopping_cart"/>
+            android:id="@+id/layout_items"
+            app:cardElevation="7dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/product_image"
+                    android:scaleType="centerCrop"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/polystar"/>
+
+                <TextView
+                    android:id="@+id/product_name"
+                    android:text="product name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:textSize="15sp"
+                    android:textColor="@android:color/black"/>
+                <TextView
+                    android:id="@+id/price"
+                    android:text="price"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:layout_marginBottom="3dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/seller_name"
+                    android:text="seller name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="4dp">
+
+                    <ImageButton
+                        android:id="@+id/shopping_cart"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_add_shopping_cart_black_24dp"
+                        android:background="@android:color/transparent"/>
+
+                    <ImageButton
+                        android:id="@+id/chat_button"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginStart="3dp"
+                        android:layout_toRightOf="@+id/shopping_cart"
+                        android:layout_toEndOf="@+id/shopping_cart"
+                        android:scaleType="centerCrop"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/wink_m"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
 
     </RelativeLayout>
+
 
 
 </LinearLayout>
