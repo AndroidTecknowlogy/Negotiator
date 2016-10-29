@@ -1,4 +1,4 @@
-package com.kongahack.negotiator;
+package com.kongahack.negotiator.app;
 
 import android.app.Application;
 

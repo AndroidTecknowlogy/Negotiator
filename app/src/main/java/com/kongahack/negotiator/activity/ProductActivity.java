@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.kongahack.negotiator.GlobalVariables;
+import com.kongahack.negotiator.app.GlobalVariables;
 import com.kongahack.negotiator.R;
 import com.kongahack.negotiator.fragment.ProductListFragment;
 import com.kongahack.negotiator.model.ProductItem;
@@ -38,12 +38,12 @@ public class ProductActivity extends AppCompatActivity {
         productImages=new ArrayList<>();
 
         //add some dummy product images to the list
-        productImages.add(getResources().getDrawable(R.drawable.m));
-        productImages.add(getResources().getDrawable(R.drawable.m1));
-        productImages.add(getResources().getDrawable(R.drawable.m2));
-        productImages.add(getResources().getDrawable(R.drawable.m3));
-        productImages.add(getResources().getDrawable(R.drawable.m4));
-        productImages.add(getResources().getDrawable(R.drawable.m5));
+        productImages.add(getResources().getDrawable(R.drawable.polystar));
+        productImages.add(getResources().getDrawable(R.drawable.samsung));
+        productImages.add(getResources().getDrawable(R.drawable.samsunginch));
+        productImages.add(getResources().getDrawable(R.drawable.lg));
+        productImages.add(getResources().getDrawable(R.drawable.lgg));
+        productImages.add(getResources().getDrawable(R.drawable.blue_gate));
 
 
 

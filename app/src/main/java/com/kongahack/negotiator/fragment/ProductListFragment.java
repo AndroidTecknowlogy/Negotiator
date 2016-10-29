@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.kongahack.negotiator.GlobalVariables;
+import com.kongahack.negotiator.app.GlobalVariables;
 import com.kongahack.negotiator.R;
 import com.kongahack.negotiator.adapter.ProductAdapter;
 

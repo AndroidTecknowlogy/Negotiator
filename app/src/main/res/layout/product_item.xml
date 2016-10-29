@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp">
 
 
     <View
@@ -16,7 +17,7 @@
         android:layout_height="wrap_content">
 
         <View
-            android:layout_width="135dp"
+            android:layout_width="127dp"
             android:layout_height="5dp"
             android:layout_alignBottom="@+id/layout_items"
             android:background="@color/splash"/>
@@ -31,34 +32,40 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="8dp">
+                android:padding="3dp">
 
                 <ImageView
                     android:id="@+id/product_image"
                     android:scaleType="centerCrop"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
+                    android:padding="5dp"
                     android:src="@drawable/polystar"/>
 
                 <TextView
                     android:id="@+id/product_name"
                     android:text="product name"
-                    android:layout_width="wrap_content"
+                    android:padding="4dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp"
-                    android:textSize="15sp"
+                    android:textSize="13sp"
                     android:textColor="@android:color/black"/>
                 <TextView
                     android:id="@+id/price"
                     android:text="price"
+                    android:textSize="11sp"
+                    android:layout_marginTop="3dp"
+                    android:padding="4dp"
                     android:textColor="@android:color/holo_red_dark"
-                    android:layout_marginBottom="3dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
                 <TextView
                     android:id="@+id/seller_name"
                     android:text="seller name"
-                    android:layout_width="wrap_content"
+                    android:textSize="11sp"
+                    android:padding="4dp"
+                    android:maxLines="1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"/>
 
@@ -69,15 +76,15 @@
 
                     <ImageButton
                         android:id="@+id/shopping_cart"
-                        android:layout_width="42dp"
-                        android:layout_height="42dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:src="@drawable/ic_add_shopping_cart_black_24dp"
                         android:background="@android:color/transparent"/>
 
                     <ImageButton
                         android:id="@+id/chat_button"
-                        android:layout_width="42dp"
-                        android:layout_height="42dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_marginLeft="3dp"
                         android:layout_marginStart="3dp"
                         android:layout_toRightOf="@+id/shopping_cart"
