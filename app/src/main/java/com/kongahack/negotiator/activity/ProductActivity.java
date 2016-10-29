@@ -8,7 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.kongahack.negotiator.app.GlobalVariables;
 import com.kongahack.negotiator.R;
+import com.kongahack.negotiator.fragment.AddNewUserFragment;
 import com.kongahack.negotiator.fragment.ProductListFragment;
+import com.kongahack.negotiator.fragment.AddNewUserFragment;
+import com.kongahack.negotiator.fragment.ChatFragment;
 import com.kongahack.negotiator.model.ProductItem;
 
 import java.util.ArrayList;
@@ -26,11 +29,13 @@ public class ProductActivity extends AppCompatActivity {
     private static String[] productPrice;
 
     private static ArrayList<Drawable> productImages;
+    public static ProductActivity activityInstance;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        activityInstance=this;
         setContentView(R.layout.activity_product_view);
         productPrice=getResources().getStringArray(R.array.prices);
         productNames=getResources().getStringArray(R.array.product_name);
@@ -67,8 +72,9 @@ public class ProductActivity extends AppCompatActivity {
 
     }
 
-    public void openChatFragment(ProductItem item)
+    public void openChatFragment(int itemPosition)
     {
-
+        getSupportFragmentManager().beginTransaction().replace(R.id.container_main,new AddNewUserFragment())
+                .commit();
     }
 }

@@ -8,8 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kongahack.negotiator.R;
+import com.kongahack.negotiator.activity.ProductActivity;
 import com.kongahack.negotiator.model.ProductItem;
 
 import java.util.ArrayList;
@@ -20,8 +22,9 @@ import java.util.ArrayList;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Holder> {
 
-    private ArrayList<ProductItem> productItems;
+    public static ArrayList<ProductItem> productItems;
     private static Context context;
+    private static int itemPosition;
     public ProductAdapter(Context context,ArrayList<ProductItem> productItems) {
         this.productItems=productItems;
         this.context=context;
@@ -38,6 +41,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Holder> 
     public void onBindViewHolder(Holder holder, int position) {
 
         ProductItem item=productItems.get(position);
+        itemPosition=position;
 
         holder.productName.setText(item.getProductName());
         holder.sellerName.setText(item.getSellerName());
@@ -69,7 +73,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Holder> 
             shoppingCart=(ImageButton)itemView.findViewById(R.id.shopping_cart);
             chatButton=(ImageButton)itemView.findViewById(R.id.chat_button);
 
+            chatButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText( context, "clicked", Toast.LENGTH_SHORT).show();
+                    ProductActivity.activityInstance.openChatFragment(itemPosition);
 
+                }
+            });
         }
     }
 }
