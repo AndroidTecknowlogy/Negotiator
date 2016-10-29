@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">Negotiator</string>
+
+    <string-array name="prices">
+        <item>&#8358;59,999</item>
+        <item>&#8358;92,999</item>
+        <item>&#8358;70,000</item>
+        <item>&#8358;30,608</item>
+        <item>&#8358;51,850</item>
+        <item>&#8358;74,000</item>
+    </string-array>
+
+    <string-array name="product_name">
+        <item>Samsung 24-inch TV</item>
+        <item>LG 32-inch LED TV</item>
+        <item>Polystar 32-inch LED TV</item>
+        <item>BLUE GATE 19-inch TV</item>
+        <item>Samsung 24-inch flatscreen TV</item>
+        <item>LG 22-inch LED TV</item>
+    </string-array>
+
+    <string-array name="seller_name">
+        <item>MOB Mobile and Gadgets</item>
+        <item>Kendo store</item>
+        <item>BestPlace store</item>
+        <item>Tripple store</item>
+        <item>Price slash shop</item>
+        <item>MBO electronics</item>
+    </string-array>
 </resources>

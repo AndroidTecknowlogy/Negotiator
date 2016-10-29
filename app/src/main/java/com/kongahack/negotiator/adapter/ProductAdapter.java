@@ -42,7 +42,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Holder> 
         holder.productName.setText(item.getProductName());
         holder.sellerName.setText(item.getSellerName());
         holder.price.setText(item.getPrice());
-        holder.productPix.setImageBitmap(item.getProductImage());
+        holder.productPix.setImageDrawable(item.getProductImage());
 
 
     }

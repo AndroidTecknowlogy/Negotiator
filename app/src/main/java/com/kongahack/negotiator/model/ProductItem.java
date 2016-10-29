@@ -1,6 +1,6 @@
 package com.kongahack.negotiator.model;
 
-import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 
 /**
  * Created by nezspencer on 10/29/16.
@@ -11,9 +11,9 @@ public class ProductItem {
     private String productName;
     private String sellerName;
     private String price;
-    private Bitmap productImage;
+    private Drawable productImage;
 
-    public ProductItem(String productName, String sellerName, String price, Bitmap productImage) {
+    public ProductItem(String productName, String sellerName, String price, Drawable productImage) {
         this.productName = productName;
         this.sellerName = sellerName;
         this.price = price;
@@ -44,11 +44,11 @@ public class ProductItem {
         this.price = price;
     }
 
-    public Bitmap getProductImage() {
+    public Drawable getProductImage() {
         return productImage;
     }
 
-    public void setProductImage(Bitmap productImage) {
+    public void setProductImage(Drawable productImage) {
         this.productImage = productImage;
     }
 }
