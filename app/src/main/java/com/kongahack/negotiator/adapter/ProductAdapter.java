@@ -79,37 +79,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Holder> 
             shoppingCart=(ImageButton)itemView.findViewById(R.id.shopping_cart);
             chatButton=(ImageButton)itemView.findViewById(R.id.chat_button);
 
-            /*chatButton.setOnClickListener(new View.OnClickListener() {
+            chatButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText( context, "clicked", Toast.LENGTH_SHORT).show();
-
-
-                    DatabaseReference reference=GlobalVariables.appInstance.getDatabaseReference();
-                    DatabaseReference usersRef=reference.child(Constants.USER_REF);
-
-                    String sellerName=GlobalVariables.appInstance.getMyProducts().get(itemPosition)
-                            .getSellerName();
-
-                    String sellerChatId=GlobalVariables.appInstance.getMyProducts().get
-                            (itemPosition)
-                            .getSellerChatID();
-                    User user=new User(sellerName,sellerChatId);
-                    HashMap<String,Object> userMap=user.toMap();
-
-                    usersRef.updateChildren(userMap, new DatabaseReference.CompletionListener() {
-                        @Override
-                        public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                            if (databaseError!=null)
-                                Toast.makeText(context,databaseError.getDetails(),Toast
-                                        .LENGTH_SHORT)
-                                .show();
-                                ProductActivity.activityInstance.openChatFragment(itemPosition);
-                        }
-                    });
+                    Toast.makeText( context, "chat", Toast.LENGTH_SHORT).show();
+                    ProductActivity.activityInstance.openChatFragment(itemPosition);
 
                 }
-            });*/
+            });
         }
     }
 }

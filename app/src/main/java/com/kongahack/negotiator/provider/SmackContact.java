@@ -21,8 +21,7 @@ public class SmackContact {
     //interface for Tables in columns
     public interface SmackColumn {
 
-        String SELLER_CHAT = "seller_chat";
-        String BUYER_CHAT = "buyer_chat";
+        String CHAT = "seller_chat";
 
     }
 
@@ -43,7 +42,7 @@ public class SmackContact {
                 +"/vnd.com.kongahack.negotiator.provider."+PATH_SMACK;
 
         public static final String[] PROJECTION = {
-                _ID, SELLER_CHAT, BUYER_CHAT
+                _ID, CHAT
         };
 
         public static final String SORT_ORDER = _ID + " ASC";

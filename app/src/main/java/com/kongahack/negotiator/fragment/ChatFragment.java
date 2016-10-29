@@ -1,15 +1,23 @@
 package com.kongahack.negotiator.fragment;
 
+import android.content.ContentProvider;
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,6 +34,7 @@ import com.kongahack.negotiator.app.GlobalVariables;
 import com.kongahack.negotiator.helper.Constants;
 import com.kongahack.negotiator.model.Chat;
 import com.kongahack.negotiator.model.ChatItem;
+import com.kongahack.negotiator.provider.SmackContact;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,7 +44,17 @@ import java.util.HashMap;
  * This view is for is invoked from the chatListFragment
  *
  */
-public class ChatFragment extends Fragment{
+public class ChatFragment extends Fragment
+        implements LoaderManager.LoaderCallbacks<Cursor>{
+
+    private final String LOG_TAG = ChatFragment.class.getSimpleName();
+
+
+    public static ReloadInterface reload;
+
+    private ListView listView;
+    private SimpleCursorAdapter cursorAdapter;
+
 
     private EditText inputMsg;
     //private FloatingActionButton sendMessage;
@@ -45,27 +64,53 @@ public class ChatFragment extends Fragment{
     DatabaseReference databaseReference;
     DatabaseReference chatRef;
     private ChatItem chatItem;
-
-    private String sellerID;
-
-    private ArrayList<Chat> chatArrayList;
-
-    private ListView chatRecycler;
-    DatabaseReference refBuyer;
-    DatabaseReference refSeller;
     int position;
+
+
+
+    String[] columns ={
+            SmackContact.SmackColumn.CHAT
+    } ;
+
+
+    public interface ReloadInterface {
+
+        void reloadFragment();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        try {
+            reload = (ReloadInterface) context;
+        }
+        catch (ClassCastException email) {
+            throw new ClassCastException(context.toString());
+        }
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_chat,container,false);
 
-        position=getArguments().getInt(Constants.KEY_ITEM_POSITION);
+        position = getArguments().getInt(Constants.KEY_ITEM_POSITION);
+        initialize(view);
 
-        inputMsg=(EditText)view.findViewById(R.id.input_message);
-        sendMessage=(FloatingActionButton) view.findViewById(R.id.send_button);
-        chatRecycler=(ListView)view.findViewById(R.id.chat_list);
-        chatArrayList=new ArrayList<>();
+        cursorAdapter = new SimpleCursorAdapter(
+                getActivity(),
+                R.layout.chat_items,
+                null,
+                columns,
+                new int[] {R.id.chat_text},
+                0
+        );
+
+
+        listView = (ListView) view.findViewById(R.id.list_chat);
+        listView.setAdapter(cursorAdapter);
+
 
         return view;
 
@@ -75,6 +120,7 @@ public class ChatFragment extends Fragment{
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        getLoaderManager().initLoader(0,null,this);
 
         sellerID=GlobalVariables.appInstance.getMyProducts().get(position).getSellerChatID
                 ();
@@ -168,5 +214,62 @@ public class ChatFragment extends Fragment{
     @Override
     public void onResume() {
         super.onResume();
+    }
+
+    public void initialize(View view) {
+
+        inputMsg=(EditText)view.findViewById(R.id.input_message);
+        sendMessage=(FloatingActionButton) view.findViewById(R.id.send_button);
+
+
+        sendMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String getMsg = inputMsg.getText().toString();
+                if(!getMsg.isEmpty()) {
+
+                    ContentValues values = new ContentValues();
+                    values.put(SmackContact.Smack.CHAT, getMsg);
+
+
+                    getActivity().getContentResolver()
+                            .insert(SmackContact.Smack.CONTENT_URI, values);
+                    values.clear();
+
+                    reload.reloadFragment();
+                }
+            }
+        });
+    }
+
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+
+        return new CursorLoader(
+                getActivity(),
+                SmackContact.Smack.CONTENT_URI,
+                SmackContact.Smack.PROJECTION,
+                null,
+                null,
+                SmackContact.Smack.SORT_ORDER
+        );
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+
+        if(data.moveToFirst()) {
+
+            cursorAdapter.swapCursor(data);
+            cursorAdapter.notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+
+        cursorAdapter.swapCursor(null);
     }
 }

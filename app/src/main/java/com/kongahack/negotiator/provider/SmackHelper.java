@@ -31,8 +31,7 @@ public class SmackHelper extends SQLiteOpenHelper{
     private final String SQL_CREATE_SMACK_TABLE = "CREATE TABLE IF NOT EXISTS "
             + Tables.SMACK + "("
             + BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + SmackContact.Smack.BUYER_CHAT + " VARCHAR NOT NULL, "
-            + SmackContact.Smack.SELLER_CHAT + " VARCHAR NOT NULL"
+            + SmackContact.Smack.CHAT + " TEXT"
             + ")";
 
     @Override

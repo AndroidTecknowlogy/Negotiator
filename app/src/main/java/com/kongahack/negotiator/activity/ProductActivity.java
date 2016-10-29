@@ -20,7 +20,7 @@ import java.util.ArrayList;
  * Created by nezspencer on 10/29/16.
  */
 
-public class ProductActivity extends AppCompatActivity {
+public class ProductActivity extends AppCompatActivity implements ChatFragment.ReloadInterface{
 
     private static String [] productNames;
 
@@ -80,7 +80,8 @@ public class ProductActivity extends AppCompatActivity {
             app.addProductItem(item);
         }
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.container_main,new ProductListFragment())
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container_main,new ProductListFragment())
                 .commit();
 
     }
@@ -93,5 +94,34 @@ public class ProductActivity extends AppCompatActivity {
         fragment.setArguments(bundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.container_main,fragment)
                 .commit();
+        /*getSupportFragmentManager().beginTransaction().replace(R.id.container_main,new AddNewUserFragment())
+                .commit();*/
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container_main, new ChatFragment(), CHAT)
+                .commit();
+    }
+
+    @Override
+    public void reloadFragment() {
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container_main, new ChatFragment(), CHAT)
+                .commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(getSupportFragmentManager().findFragmentByTag(CHAT) != null
+                && getSupportFragmentManager().findFragmentByTag(CHAT).isVisible()){
+
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container_main,new ProductListFragment())
+                    .commit();
+        }
+
+        else {
+            finish();
+        }
     }
 }
