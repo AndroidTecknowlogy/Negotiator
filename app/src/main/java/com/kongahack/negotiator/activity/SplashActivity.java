@@ -35,13 +35,13 @@ public class SplashActivity extends AwesomeSplash{
                 R.anim.activity_open_translate, R.anim.activity_close_scale);
 
         //Customize Circular Reveal
-        configSplash.setBackgroundColor(R.color.colorPrimary); //any color you want form colors.xml
+        configSplash.setBackgroundColor(android.R.color.white); //any color you want form colors.xml
         configSplash.setAnimCircularRevealDuration(850); //int ms
         configSplash.setRevealFlagX(Flags.REVEAL_LEFT);  //or Flags.REVEAL_LEFT
         configSplash.setRevealFlagY(Flags.REVEAL_TOP); //or Flags.REVEAL_TOP
 
         //Customize Logo
-        configSplash.setLogoSplash(R.drawable.smack_ic);
+        configSplash.setLogoSplash(R.drawable.smack_icon);
         configSplash.setAnimLogoSplashDuration(700); //int ms
         configSplash.setAnimLogoSplashTechnique(Techniques.FadeIn);
 
